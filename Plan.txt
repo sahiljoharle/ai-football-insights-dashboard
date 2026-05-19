@@ -1,0 +1,271 @@
+# 🚀 AI Football Match Insights Dashboard
+
+venv\Scripts\activate
+
+
+
+
+---
+
+## 🎯 Vision
+
+To build a simplified version of a football analytics platform that transforms raw match event data into meaningful tactical insights for coaches and analysts.
+
+The system focuses on converting structured event data into:
+
+* visual analytics (pass maps, shot maps)
+* AI-generated insights
+* player performance metrics
+
+---
+
+## ⚽ Problem Statement
+
+Modern football analytics platforms like StepOut convert video into insights.
+
+However:
+
+* raw match data is complex
+* insights are not directly visible
+
+This project bridges that gap by:
+👉 converting event data → visual + AI insights
+
+---
+
+## 🧠 Dataset Understanding
+
+We are using **StatsBomb Event Data (JSON)**.
+
+### Key Characteristics:
+
+* Each row = one match event
+* Events are sequential (ordered by index)
+* Each event has:
+
+  * type (Pass, Shot, Carry, etc.)
+  * player
+  * location (x, y)
+  * optional nested data (pass, shot, etc.)
+
+### Important Insight:
+
+We DO NOT use all data.
+
+We extract only:
+
+* Pass:
+
+  * start location
+  * end location
+  * outcome
+
+* Shot:
+
+  * location
+  * outcome
+
+---
+
+## 🧩 Data Processing Strategy
+
+### Step 1: Load JSON
+
+* Read match events file
+
+### Step 2: Filter Events
+
+* Keep only:
+
+  * Pass
+  * Shot
+
+### Step 3: Flatten Structure
+
+Convert nested JSON into simple structure:
+
+```json
+{
+  "player": "Player Name",
+  "type": "Pass",
+  "x": 30,
+  "y": 50,
+  "end_x": 60,
+  "end_y": 40,
+  "outcome": "Complete"
+}
+```
+
+---
+
+## 🏗️ Tech Stack (Aligned with JD)
+
+### Frontend:
+
+* React.js (dashboard UI)
+
+### Backend:
+
+* Python (FastAPI)
+
+### Database:
+
+* MongoDB (event storage)
+
+### Data Processing:
+
+* Pandas / NumPy
+
+### AI Layer:
+
+* OpenAI API (for insights generation)
+
+### Deployment:
+
+* Vercel (frontend)
+* Render / Railway (backend)
+
+---
+
+## 📊 Features
+
+### 1. Pass Map
+
+* Visualize passes as lines (start → end)
+* Analyze player distribution patterns
+
+👉 Pass maps show how teams move the ball ([soccermatics.readthedocs.io][1])
+
+---
+
+### 2. Shot Map
+
+* Plot shot locations
+* Differentiate:
+
+  * goal
+  * miss
+
+---
+
+### 3. Shot Distance Analysis
+
+* Calculate distance from goal
+* Highlight long vs short attempts
+
+---
+
+### 4. Player Movement (Approximation)
+
+* Estimate distance covered using event sequences
+
+---
+
+### 5. AI Insights Engine (Core Feature)
+
+Instead of rule-based logic:
+
+👉 Use OpenAI API
+
+Input:
+
+* aggregated match stats
+
+Output:
+
+* natural language insights
+
+Example:
+
+* “Team heavily relies on right wing”
+* “Player X has low pass accuracy”
+
+---
+
+## 🔗 System Architecture
+
+```text
+React Frontend
+        ↓
+FastAPI Backend
+        ↓
+Data Processing Layer
+        ↓
+MongoDB
+        ↓
+AI Insights Engine (OpenAI)
+```
+
+---
+
+## ⚡ Execution Plan
+
+### Day 1–2:
+
+* Data extraction + cleaning
+
+### Day 3:
+
+* Backend APIs
+
+### Day 4–5:
+
+* React dashboard
+
+### Day 6:
+
+* Visualization + AI insights
+
+### Day 7:
+
+* Deployment + demo
+
+---
+
+## 🎯 Outcome
+
+This project demonstrates:
+
+* End-to-end system design
+* Real-world data handling
+* API development
+* React UI skills
+* AI integration
+* Strong alignment with sports-tech domain
+
+---
+
+## 💡 Future Scope
+
+* Video → event extraction (CV models)
+* Real-time analytics
+* Advanced metrics (xG, xT)
+* Player tracking integration
+
+---
+
+[1]: https://soccermatics.readthedocs.io/en/latest/lesson1/VisualisingFootball.html?utm_source=chatgpt.com "Visualising football — Soccermatics documentation"
+
+
+ai-football-insights-dashboard/
+│
+├── backend/
+│   ├── app/
+│   │   ├── main.py
+│   │   ├── routes/
+│   │   ├── services/
+│   │   ├── models/
+│   │   └── utils/
+│   ├── data/
+│   │   └── raw_json/
+│   └── requirements.txt
+│
+├── frontend/
+│   ├── src/
+│   └── package.json
+│
+├── docs/
+│   └── project-vision.md
+│
+└── README.md
+

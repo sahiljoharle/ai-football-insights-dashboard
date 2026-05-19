@@ -137,3 +137,10 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+venv
+.vscode
+video_detection/training/football-players-detection-1
+runs
+video_detection/input_videos/
+video_detection/output_video/
