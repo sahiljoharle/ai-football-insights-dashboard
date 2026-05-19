@@ -1,3 +1,4 @@
 Roboflow
 ultralytics
 opencv-python
+supervision
