@@ -144,3 +144,6 @@ video_detection/training/football-players-detection-1
 runs
 video_detection/input_videos/
 video_detection/output_video/
+video_detection/models/best.pt
+video_detection/models/last.pt
+yolov8x.pt
