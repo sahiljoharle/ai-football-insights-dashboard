@@ -5,4 +5,5 @@ runs
 video_detection/input_videos/
 video_detection/output_video/
 video_detection/models/
+video_detection/stubs/
 yolov8x.pt

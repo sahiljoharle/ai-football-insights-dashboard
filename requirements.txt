@@ -2,3 +2,4 @@ Roboflow
 ultralytics
 opencv-python
 supervision
+ffmpeg
